@@ -3,7 +3,7 @@ const { promisify } = require('util')
 const fs = require('fs')
 const SVGO = require('svgo')
 const { getOptions } = require('loader-utils')
-const merge = require('lodash.merge')
+const merge = require('merge-deep')
 const JoyCon = require('joycon').default
 const toSFC = require('.')
 
