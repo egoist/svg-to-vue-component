@@ -22,7 +22,12 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "posthtml": "^0.11.3"
+    "joycon": "^2.1.2",
+    "js-yaml": "^3.12.0",
+    "loader-utils": "^1.1.0",
+    "lodash.merge": "^4.6.1",
+    "posthtml": "^0.11.3",
+    "svgo": "^1.1.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",

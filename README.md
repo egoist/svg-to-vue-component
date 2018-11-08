@@ -89,6 +89,30 @@ module.exports = {
 }
 ```
 
+## Loader Options
+
+Pass loader options like this:
+
+```js
+// ...
+{
+  test: /\.svg$/,
+  use: [
+    'vue-loader',
+    {
+      loader: 'svg-to-vue-component/loader',
+      options: {
+        // ...Your options here
+      }
+    }
+  ]
+}
+```
+
+|Option|Description|
+|---|---|
+|`svgConfig`|Project-wise configuration for [SVGO](https://github.com/svg/svgo), if you want file-relative configuration, use the config file instead, supported format: `.svgo.{yml,js,json}`, see [here](https://github.com/svg/svgo/blob/master/.svgo.yml) for an example file.|
+
 ## Contributing
 
 1. Fork it!
