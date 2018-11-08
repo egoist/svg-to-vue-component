@@ -58,6 +58,28 @@ export default {
 </script>
 ```
 
+### With vue-cli or Poi
+
+In your `vue.config.js` or `poi.config.js`:
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    // Remove exiting svg rule which uses file-loader
+    config.module.rules.delete('svg')
+
+    // Use our loader instead
+    config.module.rule('svg')
+      .test(/\.svg$/)
+      .use('vue')
+      .loader('vue-loader')
+        .end()
+      .use('svg-to-vue-component')
+      .loader('svg-to-vue-component/loader')
+  }
+}
+```
+
 ## Contributing
 
 1. Fork it!
