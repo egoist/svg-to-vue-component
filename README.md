@@ -112,7 +112,7 @@ Pass loader options like this:
 
 |Option|Description|
 |---|---|
-|`svgConfig`|Project-wise configuration for [SVGO](https://github.com/svg/svgo), if you want file-relative configuration, use the config file instead, supported format: `.svgo.{yml,js,json}`, see [here](https://github.com/svg/svgo/blob/master/.svgo.yml) for an example file.|
+|`svgoConfig`|Project-wise configuration for [SVGO](https://github.com/svg/svgo), if you want file-relative configuration, use the config file instead, supported format: `.svgo.{yml,js,json}`, see [here](https://github.com/svg/svgo/blob/master/.svgo.yml) for an example file.|
 
 ## Contributing
 
