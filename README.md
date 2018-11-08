@@ -3,6 +3,10 @@
 
 [![NPM version](https://badgen.net/npm/v/svg-to-vue-component)](https://npmjs.com/package/svg-to-vue-component) [![NPM downloads](https://badgen.net/npm/dm/svg-to-vue-component)](https://npmjs.com/package/svg-to-vue-component) [![CircleCI](https://badgen.net/circleci/github/egoist/svg-to-vue-component/master)](https://circleci.com/gh/egoist/svg-to-vue-component/tree/master)  [![donate](https://badgen.net/badge/support%20me/donate/ff69b4)](https://patreon.com/egoist) [![chat](https://badgen.net/badge/chat%20on/discord/7289DA)](https://chat.egoist.moe)
 
+## Why
+
+When you inline the `.svg` file as a Vue component instead of using the URL to the file, you can style it with CSS and add addtional DOM properties or event handlers to the `svg` element directly.
+
 ## Install
 
 ```bash
