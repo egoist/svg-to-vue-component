@@ -5,7 +5,7 @@
 
 ## Why
 
-When you inline the `.svg` file as a Vue component instead of using the URL to the file, you can style it with CSS and add addtional DOM properties or event handlers to the `svg` element directly.
+When you import the `.svg` file as a Vue component instead of using the URL to the file, you can style it with CSS and add addtional DOM properties or event handlers to the component directly.
 
 ## Install
 
