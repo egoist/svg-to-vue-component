@@ -69,7 +69,7 @@ In your `vue.config.js` or `poi.config.js`:
 ```js
 module.exports = {
   chainWebpack(config) {
-    // Remove exiting svg rule which uses file-loader
+    // Remove existing SVG rule which uses file-loader
     config.module.rules.delete('svg')
 
     // Use our loader instead
