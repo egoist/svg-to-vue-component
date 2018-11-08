@@ -7,6 +7,11 @@
 
 When you import the `.svg` file as a Vue component instead of using the URL to the file, you can style it with CSS and add addtional DOM properties or event handlers to the component directly.
 
+The differences between this project and [vue-svg-loader](https://github.com/visualfanatic/vue-svg-loader) are:
+
+- This one has built-in hot reloading support for webpack since the SVG code is compiled via `vue-loader`.
+- The latter only supports `class` and `style` attributes on the generated component while we support all DOM props and events.
+
 ## Install
 
 ```bash
