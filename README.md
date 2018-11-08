@@ -58,7 +58,7 @@ export default {
 </script>
 ```
 
-### With vue-cli or Poi
+### With Vue CLI or Poi
 
 In your `vue.config.js` or `poi.config.js`:
 
