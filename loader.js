@@ -36,7 +36,7 @@ module.exports = async function (source) {
 
 async function getSvgoConfig(svgoConfig, cwd) {
   return merge(
-    { plugins: [{ prefixIds: true }] },
+    { plugins: [{ prefixIds: true }, { removeViewBox: false }] },
     svgoConfig,
     await loadSvgoConfig(cwd)
   )
