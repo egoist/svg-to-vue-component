@@ -9,7 +9,8 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "loader.js"
+    "loader.js",
+    "lib"
   ],
   "scripts": {
     "test": "npm run lint && ava",
@@ -37,6 +38,12 @@
     "xo": "^0.18.0"
   },
   "xo": {
-    "extends": "rem"
+    "extends": "rem",
+    "rules": {
+      "unicorn/filename": "off"
+    },
+    "ignores": [
+      "lib/registerStyleComponent.js"
+    ]
   }
 }

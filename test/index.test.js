@@ -30,3 +30,9 @@ test('main', t => {
 
   t.snapshot(sfc)
 })
+
+test('replace style tag', t => {
+  const sfc = toSFC(`<svg><style>svg {width:20px;}</style></svg>`, { sync: true })
+
+  t.snapshot(sfc)
+})
