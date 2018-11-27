@@ -89,6 +89,30 @@ module.exports = {
   }
 }
 ```
+### Nuxt.js (2.x)
+``` js
+module.exports = {
+  build: {
+    extend: (config) => {
+      const imageLoaderRule = config.module.rules.find(
+        rule => rule.test && /svg/.test(rule.test.toString())
+      )
+      if (!imageLoaderRule) {
+        console.error('Could not modify image loader rule!')
+        return
+      }
+      // from https://github.com/nuxt/nuxt.js/blob/76b10d2d3f4e5352f1c9d14c52008f234e66d7d5/lib/builder/webpack/base.js#L203
+      imageLoaderRule.test = /\.(png|jpe?g|gif|webp)$/
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['vue-loader', 'svg-to-vue-component/loader']
+      })
+    },
+  },
+};
+```
+
 
 ## Loader Options
 
