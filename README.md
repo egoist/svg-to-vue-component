@@ -89,21 +89,26 @@ module.exports = {
   }
 }
 ```
-### Nuxt.js (2.x)
+### Nuxt.js 2
+
+In your `nuxt.config.js`:
+
 ``` js
 module.exports = {
   build: {
-    extend: (config) => {
+    extend(config) {
       const imageLoaderRule = config.module.rules.find(
-        rule => rule.test && /svg/.test(rule.test.toString())
+        rule => rule.test && rule.test.test('.svg')
       )
       if (!imageLoaderRule) {
-        console.error('Could not modify image loader rule!')
-        return
+        throw new Error('Cannot find the existing webpack rule for .svg files')
       }
+      
+      // Don't process .svg files in default image rule
       // from https://github.com/nuxt/nuxt.js/blob/76b10d2d3f4e5352f1c9d14c52008f234e66d7d5/lib/builder/webpack/base.js#L203
       imageLoaderRule.test = /\.(png|jpe?g|gif|webp)$/
 
+      // Add a new rule for .svg file
       config.module.rules.push({
         test: /\.svg$/,
         use: ['vue-loader', 'svg-to-vue-component/loader']
