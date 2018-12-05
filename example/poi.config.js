@@ -1,6 +1,8 @@
 module.exports = {
   entry: './example/index.js',
-  outDir: './example/dist',
+  output: {
+    dir: './example/dist'
+  },
   chainWebpack(config) {
     config.module.rules.delete('svg')
     config.module.rule('svg')

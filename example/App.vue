@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Icon @click="handleClick" foo="bat" />
+    <Icon @click="handleClick" foo="bat" class="foo" />
   </div>
 </template>
 

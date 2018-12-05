@@ -17,8 +17,23 @@ const plugin = state => tree => {
     }
 
     // Adding v-bind
-    const hasAttrs = Object.keys(attrs).length > 0
-    node.attrs['v-bind'] = hasAttrs ? `Object.assign(${JSON.stringify(attrs)},data.attrs)` : 'data.attrs'
+    const existingClass = attrs.class
+    const existingStyle = attrs.style
+    delete attrs.class
+    delete attrs.style
+
+    // Bind all attrs on the component
+    node.attrs['v-bind'] = 'data.attrs'
+
+    // Merge exiting class with the class prop on the component
+    node.attrs['v-bind:class'] = `[${existingClass}, data.staticClass, data.class]`
+
+    // Merge exiting style with the style prop on the component
+    node.attrs['v-bind:style'] = `[${existingStyle}, data.style]`
+
+    for (const key of Object.keys(attrs)) {
+      node.attrs[`v-bind:${key}`] = `data.attrs && data.attrs['${key}'] === undefined ? ${attrs[key]} : data.attrs['${key}']`
+    }
 
     // Adding v-on
     node.attrs['v-on'] = 'data.on'
