@@ -26,10 +26,10 @@ const plugin = state => tree => {
     node.attrs['v-bind'] = 'data.attrs'
 
     // Merge exiting class with the class prop on the component
-    node.attrs['v-bind:class'] = `[${existingClass}, data.staticClass, data.class]`
+    node.attrs['v-bind:class'] = `[${JSON.stringify(existingClass)}, data.staticClass, data.class]`
 
     // Merge exiting style with the style prop on the component
-    node.attrs['v-bind:style'] = `[${existingStyle}, data.style]`
+    node.attrs['v-bind:style'] = `[${JSON.stringify(existingStyle)}, data.style]`
 
     for (const key of Object.keys(attrs)) {
       node.attrs[`v-bind:${key}`] = `data.attrs && data.attrs[${JSON.stringify(key)}] === undefined ? ${JSON.stringify(attrs[key])} : data.attrs[${JSON.stringify(key)}]`
