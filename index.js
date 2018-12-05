@@ -32,7 +32,7 @@ const plugin = state => tree => {
     node.attrs['v-bind:style'] = `[${existingStyle}, data.style]`
 
     for (const key of Object.keys(attrs)) {
-      node.attrs[`v-bind:${key}`] = `data.attrs && data.attrs['${key}'] === undefined ? ${attrs[key]} : data.attrs['${key}']`
+      node.attrs[`v-bind:${key}`] = `data.attrs && data.attrs[${JSON.stringify(key)}] === undefined ? ${JSON.stringify(attrs[key])} : data.attrs[${JSON.stringify(key)}]`
     }
 
     // Adding v-on
