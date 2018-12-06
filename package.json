@@ -1,6 +1,6 @@
 {
   "name": "svg-to-vue-component",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Compile SVG files to Vue SFC.",
   "repository": {
     "url": "egoist/svg-to-vue-component",
