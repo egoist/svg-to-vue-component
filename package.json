@@ -15,7 +15,8 @@
   "scripts": {
     "test": "npm run lint && ava",
     "lint": "xo",
-    "example": "poi --serve --config example/poi.config.js"
+    "example": "poi --serve --config example/poi.config.js",
+    "commit": "git-cz"
   },
   "author": "egoist <0x142857@gmail.com>",
   "license": "MIT",
@@ -32,8 +33,11 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint-config-rem": "^3.0.0",
     "poi": "^12.0.0-beta.6",
+    "semantic-release": "^15.13.3",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17",
     "xo": "^0.18.0"
@@ -46,5 +50,13 @@
     "ignores": [
       "lib/registerStyleComponent.js"
     ]
+  },
+  "release": {
+    "branch": "master"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
