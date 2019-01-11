@@ -1,7 +1,6 @@
-
 # svg-to-vue-component
 
-[![NPM version](https://badgen.net/npm/v/svg-to-vue-component)](https://npmjs.com/package/svg-to-vue-component) [![NPM downloads](https://badgen.net/npm/dm/svg-to-vue-component)](https://npmjs.com/package/svg-to-vue-component) [![CircleCI](https://badgen.net/circleci/github/egoist/svg-to-vue-component/master)](https://circleci.com/gh/egoist/svg-to-vue-component/tree/master)  [![donate](https://badgen.net/badge/support%20me/donate/ff69b4)](https://patreon.com/egoist) [![chat](https://badgen.net/badge/chat%20on/discord/7289DA)](https://chat.egoist.moe)
+[![NPM version](https://badgen.net/npm/v/svg-to-vue-component)](https://npmjs.com/package/svg-to-vue-component) [![NPM downloads](https://badgen.net/npm/dm/svg-to-vue-component)](https://npmjs.com/package/svg-to-vue-component) [![CircleCI](https://badgen.net/circleci/github/egoist/svg-to-vue-component/master)](https://circleci.com/gh/egoist/svg-to-vue-component/tree/master) [![donate](https://badgen.net/badge/support%20me/donate/ff69b4)](https://patreon.com/egoist) [![chat](https://badgen.net/badge/chat%20on/discord/7289DA)](https://chat.egoist.moe)
 
 ## Why
 
@@ -38,12 +37,12 @@ module.exports = {
         ]
       }
     ]
-  },
+  }
   // ...other configurations
 }
 ```
 
-Then you can import `.svg` files directly and use them as Vue functional components:
+Then you can import `.svg` files directly and use them as Vue components:
 
 ```vue
 <template>
@@ -79,21 +78,23 @@ module.exports = {
     config.module.rules.delete('svg')
 
     // Use our loader instead
-    config.module.rule('svg')
+    config.module
+      .rule('svg')
       .test(/\.svg$/)
       .use('vue')
       .loader('vue-loader')
-        .end()
+      .end()
       .use('svg-to-vue-component')
       .loader('svg-to-vue-component/loader')
   }
 }
 ```
+
 ### Nuxt.js 2
 
 In your `nuxt.config.js`:
 
-``` js
+```js
 module.exports = {
   build: {
     extend(config) {
@@ -103,7 +104,7 @@ module.exports = {
       if (!imageLoaderRule) {
         throw new Error('Cannot find the existing webpack rule for .svg files')
       }
-      
+
       // Don't process .svg files in default image rule
       // from https://github.com/nuxt/nuxt.js/blob/76b10d2d3f4e5352f1c9d14c52008f234e66d7d5/lib/builder/webpack/base.js#L203
       imageLoaderRule.test = /\.(png|jpe?g|gif|webp)$/
@@ -113,11 +114,10 @@ module.exports = {
         test: /\.svg$/,
         use: ['vue-loader', 'svg-to-vue-component/loader']
       })
-    },
-  },
-};
+    }
+  }
+}
 ```
-
 
 ## Loader Options
 
@@ -139,9 +139,9 @@ Pass loader options like this:
 }
 ```
 
-|Option|Description|
-|---|---|
-|`svgoConfig`|Project-wise configuration for [SVGO](https://github.com/svg/svgo), if you want file-relative configuration, use the config file instead, supported format: `.svgo.{yml,js,json}`, see [here](https://github.com/svg/svgo/blob/master/.svgo.yml) for an example file. If you want to turn off SVGO entirely, pass `false` here.|
+| Option       | Description                                                                                                                                                                                                                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `svgoConfig` | Project-wise configuration for [SVGO](https://github.com/svg/svgo), if you want file-relative configuration, use the config file instead, supported format: `.svgo.{yml,js,json}`, see [here](https://github.com/svg/svgo/blob/master/.svgo.yml) for an example file. If you want to turn off SVGO entirely, pass `false` here. |
 
 ## Contributing
 
@@ -151,10 +151,9 @@ Pass loader options like this:
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-
 ## Author
 
 **svg-to-vue-component** © [EGOIST](https://github.com/egoist), Released under the [MIT](./LICENSE) License.<br>
 Authored and maintained by EGOIST with help from contributors ([list](https://github.com/egoist/svg-to-vue-component/contributors)).
 
-> [Website](https://egoist.sh) · GitHub [@EGOIST](https://github.com/egoist) · Twitter [@_egoistlily](https://twitter.com/_egoistlily)
+> [Website](https://egoist.sh) · GitHub [@EGOIST](https://github.com/egoist) · Twitter [@\_egoistlily](https://twitter.com/_egoistlily)
