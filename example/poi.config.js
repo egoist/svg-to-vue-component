@@ -5,7 +5,8 @@ module.exports = {
   },
   chainWebpack(config) {
     config.module.rules.delete('svg')
-    config.module.rule('svg')
+    config.module
+      .rule('svg')
       .test(/\.svg$/)
       .use('vue')
       .loader('vue-loader')

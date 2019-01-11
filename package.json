@@ -35,15 +35,23 @@
     "ava": "^0.25.0",
     "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
+    "eslint-config-prettier": "^3.3.0",
     "eslint-config-rem": "^3.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0",
     "poi": "^12.0.0-beta.6",
+    "prettier": "^1.15.3",
     "semantic-release": "^15.13.3",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17",
     "xo": "^0.18.0"
   },
   "xo": {
-    "extends": "rem",
+    "extends": [
+      "rem",
+      "plugin:prettier/recommended"
+    ],
     "rules": {
       "unicorn/filename": "off"
     },
@@ -58,5 +66,20 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "xo --fix",
+      "git add"
+    ],
+    "*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

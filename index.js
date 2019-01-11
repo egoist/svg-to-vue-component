@@ -1,7 +1,10 @@
 const path = require('path')
 const posthtml = require('posthtml')
 
-const REGISTER_STYLE_COMPONENT = path.join(__dirname, './lib/registerStyleComponent.js')
+const REGISTER_STYLE_COMPONENT = path.join(
+  __dirname,
+  './lib/registerStyleComponent.js'
+)
 
 const plugin = state => tree => {
   tree.match({ tag: 'svg' }, node => {
@@ -10,7 +13,11 @@ const plugin = state => tree => {
     node.attrs = node.attrs || {}
     for (const name of Object.keys(node.attrs)) {
       // Don't add unnecessary attrs
-      if (name !== 'version' && name !== 'xmlns' && !name.startsWith('xmlns:')) {
+      if (
+        name !== 'version' &&
+        name !== 'xmlns' &&
+        !name.startsWith('xmlns:')
+      ) {
         attrs[name] = node.attrs[name]
       }
       delete node.attrs[name]
@@ -26,13 +33,21 @@ const plugin = state => tree => {
     node.attrs['v-bind'] = 'data.attrs'
 
     // Merge exiting class with the class prop on the component
-    node.attrs['v-bind:class'] = `[${JSON.stringify(existingClass)}, data.staticClass, data.class]`
+    node.attrs['v-bind:class'] = `[${JSON.stringify(
+      existingClass
+    )}, data.staticClass, data.class]`
 
     // Merge exiting style with the style prop on the component
-    node.attrs['v-bind:style'] = `[${JSON.stringify(existingStyle)}, data.style]`
+    node.attrs['v-bind:style'] = `[${JSON.stringify(
+      existingStyle
+    )}, data.style]`
 
     for (const key of Object.keys(attrs)) {
-      node.attrs[`v-bind:${key}`] = `!data.attrs || data.attrs[${JSON.stringify(key)}] === undefined ? ${JSON.stringify(attrs[key])} : data.attrs[${JSON.stringify(key)}]`
+      node.attrs[`v-bind:${key}`] = `!data.attrs || data.attrs[${JSON.stringify(
+        key
+      )}] === undefined ? ${JSON.stringify(
+        attrs[key]
+      )} : data.attrs[${JSON.stringify(key)}]`
     }
 
     // Adding v-on
@@ -73,9 +88,7 @@ const createComponent = (svg, state) => {
 module.exports = (input, { sync } = {}) => {
   const state = {}
 
-  const stream = posthtml([
-    plugin(state)
-  ]).process(input, { sync })
+  const stream = posthtml([plugin(state)]).process(input, { sync })
 
   if (stream.then) {
     return stream.then(res => ({

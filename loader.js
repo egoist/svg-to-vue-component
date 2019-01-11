@@ -7,7 +7,7 @@ const merge = require('merge-deep')
 const JoyCon = require('joycon').default
 const toSFC = require('.')
 
-module.exports = async function (source) {
+module.exports = async function(source) {
   this.cacheable()
 
   const cb = this.async()

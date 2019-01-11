@@ -32,7 +32,9 @@ test('main', t => {
 })
 
 test('replace style tag', t => {
-  const sfc = toSFC(`<svg><style>svg {width:20px;}</style></svg>`, { sync: true })
+  const sfc = toSFC(`<svg><style>svg {width:20px;}</style></svg>`, {
+    sync: true
+  })
 
   t.true(sfc.component.includes('/lib/registerStyleComponent.js'))
   t.true(sfc.component.includes('<svg2vue-style>'))
