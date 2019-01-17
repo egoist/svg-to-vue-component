@@ -30,7 +30,7 @@ const createComponent = (svg, state) => {
   if (state.hasStyleTag) {
     result += `
     <script>
-    import Component ${JSON.stringify(STYLE_COMPONENT)}
+    import Component from ${JSON.stringify(STYLE_COMPONENT)}
     export default {
       components: {
         'svg2vue-style': Component
