@@ -851,10 +851,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@poi/dev-utils@^12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@poi/dev-utils/-/dev-utils-12.1.0.tgz#646b159a75a1d74bac5cb784a3e75b8b755dd67c"
-  integrity sha512-y3fGQXA1UJMa00/MoU6s7pqkrsRg16mb5px4bI678S5u2Wy5d4H+JLlCuJL+Zg6ktLE5ikeXXC/iUWcnmZdBdQ==
+"@poi/dev-utils@^12.1.1":
+  version "12.1.1"
+  resolved "https://registry.npmjs.org/@poi/dev-utils/-/dev-utils-12.1.1.tgz#3a0c2c92f886cf4b6395aa8e803ca2462c99d09c"
+  integrity sha512-gV1RUXKCR59P+84RHJaCkJXh/F9k6nDUPzoVB6DeNi/4rhG2SapRGIvjy9ZXzJGToaOa7qQw/mR63MdoOE/EXA==
   dependencies:
     address "^1.0.3"
     cross-spawn "^6.0.5"
@@ -869,6 +869,16 @@
   integrity sha512-G2wQoJgBf64EKQ6gooHoFFCB5T4upW9Q0dndluD93bGRKyAsbkvVu70ahww9EMMUPwP1XTCVsUFyCGI+zTAM6w==
   dependencies:
     chalk "^2.4.1"
+
+"@poi/plugin-html-entry@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@poi/plugin-html-entry/-/plugin-html-entry-0.1.1.tgz#41ed44c13424cf3209a8d26b664995e3e8168dff"
+  integrity sha512-04kdLhbP/W02M2mdn9tk4bP+tRIlt1U6rr1jBXAZscGFi8QA+Tj7EBks3/jqGodL2/5uOYfKPMJpoZRDBcBQWg==
+  dependencies:
+    chokidar "^2.0.4"
+    fs-extra "^7.0.1"
+    lodash "^4.17.11"
+    posthtml "^0.11.3"
 
 "@poi/pnp-webpack-plugin@^0.0.2":
   version "0.0.2"
@@ -2625,7 +2635,7 @@ chokidar@^1.4.2:
   optionalDependencies:
     fsevents "^1.0.0"
 
-chokidar@^2.0.0, chokidar@^2.0.2:
+chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
   integrity sha512-z9n7yt9rOvIJrMhvDtDictKrkFHeihkNl6uWMmZlmL6tJtX9Cs+87oK+teBx+JIgzvbX3yZHT3eF8vpbDxHJXQ==
@@ -8698,6 +8708,11 @@ parse-ms@^1.0.0:
   resolved "https://registry.npmjs.org/parse-ms/-/parse-ms-1.0.1.tgz#56346d4749d78f23430ca0c713850aef91aa361d"
   integrity sha1-VjRtR0nXjyNDDKDHE4UK75GqNh0=
 
+parse-ms@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/parse-ms/-/parse-ms-2.0.0.tgz#7b3640295100caf3fa0100ccceb56635b62f9d62"
+  integrity sha512-AddiXFSLLCqj+tCRJ9MrUtHZB4DWojO3tk0NVZ+g5MaMQHF2+p2ktqxuoXyPFLljz/aUK0Nfhd/uGWnhXVXEyA==
+
 parse-passwd@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/parse-passwd/-/parse-passwd-1.0.0.tgz#6d5b934a456993b23d37f40a382d6f1666a8e5c6"
@@ -8888,10 +8903,10 @@ pluralize@^1.2.1:
   resolved "https://registry.npmjs.org/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
   integrity sha1-0aIUg/0iu0HlihL6NCGCMUCJfEU=
 
-poi@^12.4.3:
-  version "12.4.3"
-  resolved "https://registry.npmjs.org/poi/-/poi-12.4.3.tgz#8c27018c934abe031956831c948392a0acb2c463"
-  integrity sha512-NOpOYepmRrrjpmewM8m+aDnzXWpG2ActL8KeGv9zU4Ix2evWspdjYQIbDHArIv9PLnKQx7TIkKxnUiXWx2NhPg==
+poi@^12.5.2:
+  version "12.5.2"
+  resolved "https://registry.npmjs.org/poi/-/poi-12.5.2.tgz#9315a3ee9b7be272ba206840ea058e3cc8405988"
+  integrity sha512-ad3dnCWY/E1fAJCmYPJ5Qf/NfGaBaPiPJEpRE0qFD6XLpMFUyXvOjHwAGO9TIvX95/qxq0pv2aqM8FiudblXZQ==
   dependencies:
     "@babel/core" "^7.1.6"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -8905,8 +8920,9 @@ poi@^12.4.3:
     "@babel/preset-typescript" "^7.1.0"
     "@babel/runtime" "^7.1.5"
     "@intervolga/optimize-cssnano-plugin" "^1.0.6"
-    "@poi/dev-utils" "^12.1.0"
+    "@poi/dev-utils" "^12.1.1"
     "@poi/logger" "^12.0.0"
+    "@poi/plugin-html-entry" "^0.1.1"
     "@poi/pnp-webpack-plugin" "^0.0.2"
     babel-helper-vue-jsx-merge-props "^2.0.3"
     babel-loader "^8.0.4"
@@ -8933,6 +8949,7 @@ poi@^12.4.3:
     mini-css-extract-plugin "^0.4.5"
     ora "^3.0.0"
     postcss-loader "^3.0.0"
+    pretty-ms "^4.0.0"
     resolve-from "^4.0.0"
     string-width "^2.1.1"
     superstruct "^0.6.0"
@@ -9389,6 +9406,13 @@ pretty-ms@^3.0.0:
   integrity sha512-ZypexbfVUGTFxb0v+m1bUyy92DHe5SyYlnyY0msyms5zd3RwyvNgyxZZsXXgoyzlxjx5MiqtXUdhUfvQbe0A2Q==
   dependencies:
     parse-ms "^1.0.0"
+
+pretty-ms@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/pretty-ms/-/pretty-ms-4.0.0.tgz#31baf41b94fd02227098aaa03bd62608eb0d6e92"
+  integrity sha512-qG66ahoLCwpLXD09ZPHSCbUWYTqdosB7SMP4OffgTgL2PBKXMuUsrk5Bwg8q4qPkjTXsKBMr+YK3Ltd/6F9s/Q==
+  dependencies:
+    parse-ms "^2.0.0"
 
 private@^0.1.6, private@^0.1.8:
   version "0.1.8"

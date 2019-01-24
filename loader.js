@@ -10,6 +10,12 @@ const toSFC = require('.')
 module.exports = async function(source) {
   this.cacheable()
 
+  if (this.issuer && this.issuer.endsWith('.css')) {
+    throw new Error(
+      `Please configure another loader to handle .svg files imported in .css files\nSee more: https://github.com/egoist/svg-to-vue-component#usage`
+    )
+  }
+
   const cb = this.async()
   const { svgoConfig } = getOptions(this) || {}
 

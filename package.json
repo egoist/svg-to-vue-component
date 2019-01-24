@@ -10,6 +10,8 @@
   "files": [
     "index.js",
     "loader.js",
+    "nuxt.js",
+    "poi.js",
     "lib"
   ],
   "scripts": {
@@ -40,7 +42,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.0",
-    "poi": "^12.4.3",
+    "poi": "^12.5.2",
     "prettier": "^1.15.3",
     "semantic-release": "^15.13.3",
     "vue": "^2.5.17",

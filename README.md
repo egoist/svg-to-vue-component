@@ -29,6 +29,9 @@ module.exports = {
     rules: [
       {
         test: /\.svg$/,
+        // If you want to import svg in css files
+        // You need to configure another rule to use file-loader for that
+        issuer: /\.(vue|js|ts)$/,
         use: [
           // This loader compiles .svg file to .vue file
           // So we use `vue-loader` after it
@@ -67,20 +70,24 @@ export default {
 </script>
 ```
 
-### With Vue CLI or Poi
+### With Vue CLI
 
-In your `vue.config.js` or `poi.config.js`:
+In your `vue.config.js`:
 
 ```js
 module.exports = {
   chainWebpack(config) {
-    // Remove existing SVG rule which uses file-loader
-    config.module.rules.delete('svg')
+    // Only convert .svg files that are imported by these files as Vue component
+    const FILE_RE = /\.(vue|js|ts)$/
 
-    // Use our loader instead
+    // Use vue-cli's default rule for svg in non .vue .js .ts files
+    config.module.rule('svg').issuer(file => !FILE_RE.test(file))
+
+    // Use our loader to handle svg imported by other files
     config.module
-      .rule('svg')
+      .rule('svg-component')
       .test(/\.svg$/)
+      .issuer(file => FILE_RE.test(file))
       .use('vue')
       .loader('vue-loader')
       .end()
@@ -90,32 +97,23 @@ module.exports = {
 }
 ```
 
+## With Poi
+
+In your `poi.config.js`:
+
+```js
+module.exports = {
+  plugins: ['svg-to-vue-component/poi']
+}
+```
+
 ### Nuxt.js 2
 
 In your `nuxt.config.js`:
 
 ```js
 module.exports = {
-  build: {
-    extend(config) {
-      const imageLoaderRule = config.module.rules.find(
-        rule => rule.test && rule.test.test('.svg')
-      )
-      if (!imageLoaderRule) {
-        throw new Error('Cannot find the existing webpack rule for .svg files')
-      }
-
-      // Don't process .svg files in default image rule
-      // from https://github.com/nuxt/nuxt.js/blob/76b10d2d3f4e5352f1c9d14c52008f234e66d7d5/lib/builder/webpack/base.js#L203
-      imageLoaderRule.test = /\.(png|jpe?g|gif|webp)$/
-
-      // Add a new rule for .svg file
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ['vue-loader', 'svg-to-vue-component/loader']
-      })
-    }
-  }
+  modules: ['svg-to-vue-component/nuxt']
 }
 ```
 
