@@ -10,16 +10,16 @@ const toSFC = require('.')
 module.exports = async function(source) {
   this.cacheable()
 
-  if (this.issuer && this.issuer.endsWith('.css')) {
-    throw new Error(
-      `Please configure another loader to handle .svg files imported in .css files\nSee more: https://github.com/egoist/svg-to-vue-component#usage`
-    )
-  }
-
   const cb = this.async()
   const { svgoConfig } = getOptions(this) || {}
 
   try {
+    if (this.issuer && this.issuer.endsWith('.css')) {
+      throw new Error(
+        `Please configure another loader to handle .svg files imported in .css files\nSee more: https://github.com/egoist/svg-to-vue-component#usage`
+      )
+    }
+
     if (svgoConfig !== false) {
       const svgo = new SVGO(
         await getSvgoConfig(svgoConfig, path.dirname(this.resourcePath))
@@ -33,7 +33,6 @@ module.exports = async function(source) {
     }
 
     const { component } = await toSFC(source)
-
     cb(null, component)
   } catch (err) {
     cb(err)

@@ -3,7 +3,7 @@ exports.name = 'svg-to-vue-component'
 exports.apply = api => {
   api.hook('createWebpackChain', config => {
     // Only convert .svg files that are imported by these files as Vue component
-    const FILE_RE = /\.(vue|js|ts)$/
+    const FILE_RE = /\.(vue|js|ts|svg)$/
 
     // Use vue-cli's default rule for svg in non .vue .js .ts files
     config.module.rule('svg').issuer(file => !FILE_RE.test(file))
@@ -12,7 +12,9 @@ exports.apply = api => {
     config.module
       .rule('svg-component')
       .test(/\.svg$/)
-      .issuer(file => FILE_RE.test(file))
+      .issuer(file => {
+        return FILE_RE.test(file)
+      })
       .use('vue')
       .loader('vue-loader')
       .end()

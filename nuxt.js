@@ -11,7 +11,7 @@ module.exports = function() {
     imageRule.test = /\.(png|jpe?g|gif|webp)$/
 
     // Handle svg files imported by css files
-    const FILE_RE = /\.(vue|js|ts)$/
+    const FILE_RE = /\.(vue|js|ts|svg)$/
     config.module.rules.push(
       Object.assign({}, imageRule, {
         issuer: file => !FILE_RE.test(file)

@@ -31,7 +31,7 @@ module.exports = {
         test: /\.svg$/,
         // If you want to import svg in css files
         // You need to configure another rule to use file-loader for that
-        issuer: /\.(vue|js|ts)$/,
+        issuer: /\.(vue|js|ts|svg)$/,
         use: [
           // This loader compiles .svg file to .vue file
           // So we use `vue-loader` after it
@@ -78,7 +78,7 @@ In your `vue.config.js`:
 module.exports = {
   chainWebpack(config) {
     // Only convert .svg files that are imported by these files as Vue component
-    const FILE_RE = /\.(vue|js|ts)$/
+    const FILE_RE = /\.(vue|js|ts|svg)$/
 
     // Use vue-cli's default rule for svg in non .vue .js .ts files
     config.module.rule('svg').issuer(file => !FILE_RE.test(file))
