@@ -25,7 +25,7 @@ const plugin = state => tree => {
 }
 
 const createComponent = (svg, state) => {
-  let result = `<template>${svg}</template>`
+  let result = `<template>\n${svg}\n</template>`
 
   if (state.hasStyleTag) {
     result += `
