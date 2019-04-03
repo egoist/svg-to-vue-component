@@ -103,7 +103,15 @@ In your `poi.config.js`:
 
 ```js
 module.exports = {
-  plugins: ['svg-to-vue-component/poi']
+  plugins: ['svg-to-vue-component/poi'],
+
+  // Or with options for the webpack loader
+  plugins: [
+    {
+      resolve: 'svg-to-vue-component/nuxt',
+      options: {}
+    }
+  ]
 }
 ```
 
@@ -113,7 +121,15 @@ In your `nuxt.config.js`:
 
 ```js
 module.exports = {
-  modules: ['svg-to-vue-component/nuxt']
+  modules: ['svg-to-vue-component/nuxt'],
+
+  // Or with options for the webpack loader
+  modules: [
+    'svg-to-vue-component/nuxt',
+    {
+      // ...
+    }
+  ]
 }
 ```
 

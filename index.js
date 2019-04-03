@@ -1,9 +1,6 @@
-const path = require('path')
 const posthtml = require('posthtml')
 
-const STYLE_COMPONENT = path.join(__dirname, './lib/StyleComponent.js')
-
-const plugin = state => tree => {
+const plugin = () => tree => {
   tree.match({ tag: 'svg' }, node => {
     node.attrs = node.attrs || {}
     // Bind all events so that you can @click="handler" instead of @click.native="handler"
@@ -17,45 +14,29 @@ const plugin = state => tree => {
     if (!node.content || node.content.length === 0) return
 
     // When SVGO is turned off
-    // Make `style` tags work by using a Vue component
-    node.tag = 'svg2vue-style'
-    state.hasStyleTag = true
+    // Make `style` tags work by using a dynamic component
+    node.tag = 'component'
+    node.attrs = node.attrs || {}
+    node.attrs.is = 'style'
     return node
   })
 }
 
-const createComponent = (svg, state) => {
-  let result = `<template>\n${svg}\n</template>`
-
-  if (state.hasStyleTag) {
-    result += `
-    <script>
-    import Component from ${JSON.stringify(STYLE_COMPONENT)}
-    export default {
-      components: {
-        'svg2vue-style': Component
-      }
-    }
-    </script>
-    `
-  }
-
-  return result
+const createComponent = svg => {
+  return `<template>\n${svg}\n</template>`
 }
 
 module.exports = (input, { sync } = {}) => {
-  const state = {}
-
-  const stream = posthtml([plugin(state)]).process(input, {
+  const stream = posthtml([plugin()]).process(input, {
     sync,
     recognizeSelfClosing: true
   })
 
   if (stream.then) {
     return stream.then(res => ({
-      component: createComponent(res.html, state)
+      component: createComponent(res.html)
     }))
   }
 
-  return { component: createComponent(stream.html, state) }
+  return { component: createComponent(stream.html) }
 }

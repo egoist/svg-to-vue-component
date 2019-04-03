@@ -11,8 +11,7 @@
     "index.js",
     "loader.js",
     "nuxt.js",
-    "poi.js",
-    "lib"
+    "poi.js"
   ],
   "scripts": {
     "test": "npm run lint && ava",

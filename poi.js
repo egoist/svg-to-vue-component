@@ -1,6 +1,6 @@
 exports.name = 'svg-to-vue-component'
 
-exports.apply = api => {
+exports.apply = (api, options) => {
   api.hook('createWebpackChain', config => {
     // Only convert .svg files that are imported by these files as Vue component
     const FILE_RE = /\.(vue|js|ts|svg)$/
@@ -20,5 +20,6 @@ exports.apply = api => {
       .end()
       .use('svg-to-vue-component')
       .loader(require.resolve('./loader'))
+      .options(options)
   })
 }

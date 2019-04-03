@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(options) {
   this.extendBuild(config => {
     const imageRule = config.module.rules.find(
       rule => rule.test && rule.test.test('.svg')
@@ -22,7 +22,13 @@ module.exports = function() {
     config.module.rules.push({
       test: /\.svg$/,
       issuer: file => FILE_RE.test(file),
-      use: ['vue-loader', 'svg-to-vue-component/loader']
+      use: [
+        'vue-loader',
+        {
+          loader: 'svg-to-vue-component/loader',
+          options
+        }
+      ]
     })
   })
 }
