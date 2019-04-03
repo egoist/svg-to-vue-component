@@ -36,6 +36,5 @@ test('replace style tag', t => {
     sync: true
   })
 
-  t.true(sfc.component.includes('/lib/StyleComponent.js'))
-  t.true(sfc.component.includes('<svg2vue-style>'))
+  t.snapshot(sfc.component)
 })
