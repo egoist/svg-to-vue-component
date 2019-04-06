@@ -125,10 +125,11 @@ module.exports = {
 
   // Or with options for the webpack loader
   modules: [
-    'svg-to-vue-component/nuxt',
-    {
-      // ...
-    }
+    ['svg-to-vue-component/nuxt',
+      {
+        // ...
+      }
+    ]
   ]
 }
 ```
