@@ -14,6 +14,7 @@ module.exports = function(options) {
     const FILE_RE = /\.(vue|js|ts|svg)$/
     config.module.rules.push(
       Object.assign({}, imageRule, {
+        test: /\.svg$/,
         issuer: file => !FILE_RE.test(file)
       })
     )
