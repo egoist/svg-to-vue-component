@@ -14,8 +14,15 @@ The differences between this project and [vue-svg-loader](https://github.com/vis
 
 ## Install
 
+### Vue 2.x
+
 ```bash
 yarn add svg-to-vue-component --dev
+```
+### Vue 3.x
+
+```bash
+yarn add svg-to-vue-component@next --dev
 ```
 
 ## Usage
