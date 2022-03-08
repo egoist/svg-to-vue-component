@@ -1,12 +1,6 @@
 const posthtml = require('posthtml')
 
 const plugin = () => tree => {
-  tree.match({ tag: 'svg' }, node => {
-    node.attrs = node.attrs || {}
-    // Bind all events so that you can @click="handler" instead of @click.native="handler"
-    node.attrs['v-on'] = '$listeners'
-    return node
-  })
   // SVGO will inline styles, so if you don't turn off relevant plugin
   // the tree will never match `style` nodes because they don't exist
   tree.match({ tag: 'style' }, node => {
